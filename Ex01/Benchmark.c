@@ -4,7 +4,7 @@
 void benchmark(int N)
 {
     // Allocate arrays
-    float *x, *y;
+    double *x, *y;
     x = malloc(sizeof(double) * N);
     y = malloc(sizeof(double) *  N);
 
@@ -27,10 +27,10 @@ void benchmark(int N)
 
 int main()
 {
-    int i;
+    long i;
     for (i = 10000; i < 100000000; i = i * 2)
     {
-       printf("Using N = %d", i);
+       printf("Using N = %d\n", i);
        benchmark(i);
     }
     return 0;
