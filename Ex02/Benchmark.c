@@ -9,6 +9,8 @@ float GLOBAL_VAR = 2.03f;
 
 void benchmark(int N)
 {
+    FILE* outputFile = fopen("output.txt", "w+");
+
     #ifdef DOUBLE
     extern double GLOBAL_VAR;
     
@@ -39,8 +41,22 @@ void benchmark(int N)
         y[i] = GLOBAL_VAR * x[i] + y[i];
     }
     double endTime = getTimeInSeconds();
+    double elapsedTime = endTime - startTime;
+    #ifdef DOUBLE
+    double memoryBandwidth = ((double)(3.0 * N * sizeof(double))) / elapsedTime;
+    #else
+    double memoryBandwidth = ((double)(3.0 * N * sizeof(float))) / elapsedTime;
+    #endif
 
-    printf("Total time elapsed (in seconds): %f\n", endTime - startTime);
+    // Convert to GB/s
+    memoryBandwidth = memoryBandwidth / (pow(2, 30));
+
+    printf("Start time: %f | End time: %f\n", startTime, endTime);
+    printf("Total time elapsed: %f seconds\n", elapsedTime);
+    printf("Achieved memory bandwidth: %.2f GB/s\n", memoryBandwidth); 
+
+    fprintf(outputFile, "%d %f %f", N, elapsedTime, memoryBandwidth);
+    fclose(outputFile);
 }
 
 int main()
