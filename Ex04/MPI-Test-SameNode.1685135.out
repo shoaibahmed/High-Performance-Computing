@@ -1,0 +1,18 @@
+Sending a message of size: 1000
+Sending a message of size: 10000
+Process 1 received text: a of length: 1000
+Start time: 1529967978.766649 | End time: 1529967978.766745 | Elapsed time: 0.000096
+Sending a message of size: 100000
+Process 1 received text: a of length: 10000
+Start time: 1529967978.766772 | End time: 1529967978.766837 | Elapsed time: 0.000065
+Process 1 received text: a of length: 100000
+Sending a message of size: 1000000
+Start time: 1529967978.766911 | End time: 1529967978.767088 | Elapsed time: 0.000177
+Process 1 received text: a of length: 1000000
+Start time: 1529967978.767159 | End time: 1529967978.768157 | Elapsed time: 0.000998
+Sending a message of size: 10000000
+Process 1 received text: a of length: 10000000
+Start time: 1529967978.768360 | End time: 1529967978.774348 | Elapsed time: 0.005988
+Sending a message of size: 100000000
+Process 1 received text: a of length: 100000000
+Start time: 1529967978.774634 | End time: 1529967978.834622 | Elapsed time: 0.059988

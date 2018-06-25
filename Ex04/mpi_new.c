@@ -3,9 +3,8 @@
 #include <string.h>
 #include "mpi.h"
 
-int NUM_MESSAGES = 2;
-//int MESSAGE_LENGTHS[] = {1000, 10000, 100000, 1000000, 10000000, 100000000};
-int MESSAGE_LENGTHS[2] = {10, 100};
+int NUM_MESSAGES = 6;
+int MESSAGE_LENGTHS[] = {1000, 10000, 100000, 1000000, 10000000, 100000000};
 
 int main(int argc, char** argv)
 {
@@ -29,16 +28,14 @@ int main(int argc, char** argv)
 
   int i, j;
   //FILE* outputFile = fopen("output.txt", "w");
+  char received = 'r';
 
-  for (i = 0; i < NUM_MESSAGES; i++)
+  // If process 0
+  if (rank == 0)
   {
-    char received = 'r';
-
-    // If process 0
-    if (rank == 0)
+    for (i = 0; i < NUM_MESSAGES; i++)
     {
       printf("Sending a message of size: %d\n", MESSAGE_LENGTHS[i]);
-
       char* text = malloc(sizeof(char) * MESSAGE_LENGTHS[i]);
       for (j = 0; j < MESSAGE_LENGTHS[i] - 1; j++)
         text[j] = 'a';
@@ -47,10 +44,14 @@ int main(int argc, char** argv)
       MPI_Send(text, MESSAGE_LENGTHS[i], MPI_CHAR, receiver, tag, MPI_COMM_WORLD);
       MPI_Recv(&received, 0, MPI_CHAR, receiver, tag, MPI_COMM_WORLD, &status);
 
-      free(text); // Free memory
+      // Free memory
+      free(text);
     }
-    // If process 1
-    else
+  }
+  // If process 1
+  else
+  {
+    for (i = 0; i < NUM_MESSAGES; i++)
     {
       char* buffer = malloc(sizeof(char) * MESSAGE_LENGTHS[i]);
 
@@ -66,14 +67,15 @@ int main(int argc, char** argv)
       printf("Process %d received text: %c of length: %d\n", rank, buffer[0], MESSAGE_LENGTHS[i]);
       printf("Start time: %f | End time: %f | Elapsed time: %f\n", startTime, endTime, endTime - startTime);
 
-      free(buffer); // Free memory
+      // Free memory
+      free(buffer);
     }
-
-    //fprintf(outputFile, "%d, %f, %f, %f\n", MESSAGE_LENGTHS[i], startTime, endTime, endTime - startTime);
-
-    // Kill all deamons
-    MPI_Finalize();
   }
+
+  //fprintf(outputFile, "%d, %f, %f, %f\n", MESSAGE_LENGTHS[i], startTime, endTime, endTime - startTime);
+
+  // Kill all deamons
+  MPI_Finalize();
 
   //fclose(outputFile);
 }
