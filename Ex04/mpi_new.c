@@ -71,7 +71,7 @@ int main(int argc, char** argv)
       double elapsedTime = endTime - startTime;
       if (elapsedTime - avgStartupTime < 0.0)
       {
-        printf("Warning: Elapsed time is less than startup time!");
+        printf("Error: Elapsed time is less than startup time!");
         MPI_File_close(&fh);
         MPI_Finalize();
         exit(-1);
