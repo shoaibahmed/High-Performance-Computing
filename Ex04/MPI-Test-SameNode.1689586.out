@@ -1,0 +1,19 @@
+Startup time: 0.000001
+Sending a message of size: 1000
+Start time: 1530003218.133224 | End time: 1530003218.133226 | Elapsed time: 0.000002 | Actual elapsed time: 0.000001
+Process 1 received text: a of length: 1000
+Sending a message of size: 10000
+Process 1 received text: a of length: 10000
+Start time: 1530003218.134663 | End time: 1530003218.134696 | Elapsed time: 0.000033 | Actual elapsed time: 0.000032
+Sending a message of size: 100000
+Process 1 received text: a of length: 100000
+Start time: 1530003218.135338 | End time: 1530003218.135526 | Elapsed time: 0.000188 | Actual elapsed time: 0.000187
+Sending a message of size: 1000000
+Start time: 1530003218.136521 | End time: 1530003218.137129 | Elapsed time: 0.000608 | Actual elapsed time: 0.000607
+Process 1 received text: a of length: 1000000
+Sending a message of size: 10000000
+Start time: 1530003218.140421 | End time: 1530003218.144010 | Elapsed time: 0.003589 | Actual elapsed time: 0.003589
+Process 1 received text: a of length: 10000000
+Sending a message of size: 100000000
+Start time: 1530003218.166861 | End time: 1530003218.196830 | Elapsed time: 0.029969 | Actual elapsed time: 0.029968
+Process 1 received text: a of length: 100000000
