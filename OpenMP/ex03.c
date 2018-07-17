@@ -29,7 +29,7 @@ int main(int argv, char* argc)
 		for (i = id * steps_per_thread; i < (id + 1) * steps_per_thread; i++)
 		{
 			x = (i + 0.5) * step;
-			sum[id * PAD] += + 4.0 / (1.0 + x * x);
+			sum[id * PAD] += 4.0 / (1.0 + x * x);
 		}
 	}
 
