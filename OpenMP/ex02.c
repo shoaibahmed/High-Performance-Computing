@@ -12,25 +12,27 @@ int main(int argv, char* argc)
 
 	int num_procs = omp_get_num_procs();
 	omp_set_num_threads(num_procs);
-	total_threads = omp_get_num_threads();
+	double* sum = (double*) malloc(sizeof(double) * num_procs);
 
-	int steps_per_thread = num_steps / total_threads;
-	printf ("Using %d threads and computing %d steps per thread.\n", total_threads, steps_per_thread);
+	int steps_per_thread = num_steps / num_procs;
+	printf ("Found %d CPUs. Using %d threads and computing %d steps per thread.\n", num_procs, num_procs, steps_per_thread);
 
 	double startTime = omp_get_wtime();
 	#pragma omp parallel
 	{
-		int i, ID = omp_get_thread_num();
-		double x, sum = 0.0;
-		for (i = ID * steps_per_thread; i < (ID + 1) * steps_per_thread; i++)
+		int i, id = omp_get_thread_num();
+		printf("Executing thread %d\n", id);
+		double x;
+		for (i = id * steps_per_thread; i < (id + 1) * steps_per_thread; i++)
 		{
 			x = (i + 0.5) * step;
-			sum = sum + 4.0 / (1.0 + x * x);
+			sum[id] = sum[id] + 4.0 / (1.0 + x * x);
 		}
-
-		// Race condition
-		total_sum = total_sum + sum;
 	}
+
+	int i;
+	for (i = 0; i < num_procs; i++)
+		total_sum += sum[i];
 
 	pi = step * total_sum;
 	double endTime = omp_get_wtime();

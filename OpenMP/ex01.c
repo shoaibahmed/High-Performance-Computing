@@ -5,9 +5,9 @@ int main(int argv, char* argc)
 {
 	#pragma omp parallel
 	{
-		int ID = omp_get_thread_num();
-		printf ("Hello (%d) ", ID);
-		printf ("World (%d)!\n", ID);
+		int id = omp_get_thread_num();
+		printf ("Hello (%d) ", id);
+		printf ("World (%d)!\n", id);
 	}
 
 	return 0;
