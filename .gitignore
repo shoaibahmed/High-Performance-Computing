@@ -4,5 +4,7 @@
 # Unignore all with extensions
 !*.*
 
+*.out
+
 # Unignore all dirs
 !*/
