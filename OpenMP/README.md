@@ -8,7 +8,7 @@ Exercises for the amazing YouTube course from Intel on OpenMP (https://www.youtu
 + **Ex02:** Integral computation program (contains both sequential and parallel code).
 + **Ex03:** Integral computation program with padding to avoid false sharing (same cache line hits).
 + **Ex04:** Integral computation program with synchronization (critical section and atomics).
-+ **Ex05:** Parallel loops.
++ **Ex05:** Parallel for loop and reduction.
 
 ## License:
 
