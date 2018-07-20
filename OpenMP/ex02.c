@@ -6,22 +6,31 @@ double step;
 
 int main(int argv, char* argc)
 {
-	int total_threads;
+	int num_threads;
 	double pi, total_sum = 0.0;
 	step = 1.0 / (double) num_steps;
 
 	int num_procs = omp_get_num_procs();
-	omp_set_num_threads(num_procs);
-	double* sum = (double*) malloc(sizeof(double) * num_procs);
+	// omp_set_num_threads(num_procs);
+	double* sum;
 
-	int steps_per_thread = num_steps / num_procs;
+	int steps_per_thread;
 	// int num_threads = omp_get_num_threads(); // Sequential section always returns 1 thread -> Move to parallel section
-	printf ("Found %d CPUs. Using %d threads and computing %d steps per thread.\n", num_procs, num_procs, steps_per_thread);
-
+	
 	double startTime = omp_get_wtime();
 	#pragma omp parallel
 	{
-		int num_threads = omp_get_num_threads();
+		#pragma omp single
+		{
+			num_threads = omp_get_num_threads();
+			
+			steps_per_thread = num_steps / num_threads;
+			sum = (double*) malloc(sizeof(double) * num_threads);
+
+			printf ("Found %d CPUs. Using %d threads and computing %d steps per thread.\n", num_procs, num_threads, steps_per_thread);
+			// Implicit barrier at the end
+		}
+
 		int i, id = omp_get_thread_num();
 		printf("Executing thread %d out of %d\n", id, num_threads);
 		double x;
