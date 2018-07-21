@@ -6,6 +6,7 @@ icc:
 	icc -o ex04 -O3 ex04.c -fopenmp
 	icc -o ex05 -O3 ex05.c -fopenmp
 	icc -o ex06 -O3 ex06.c -fopenmp
+	icc -o ex07 -O3 ex07.c -fopenmp
 
 gcc:
 	gcc -o test -O4 test.c -fopenmp
@@ -15,6 +16,7 @@ gcc:
 	gcc -o ex04 -O3 ex04.c -fopenmp
 	gcc -o ex05 -O3 ex05.c -fopenmp
 	gcc -o ex06 -O3 ex06.c -fopenmp
+	gcc -o ex07 -O3 ex07.c -fopenmp
 
 clean:
 	rm test
@@ -24,3 +26,4 @@ clean:
 	rm ex04
 	rm ex05
 	rm ex06
+	rm ex07

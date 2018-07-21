@@ -10,6 +10,7 @@ Exercises for the amazing YouTube course from Intel on OpenMP (https://www.youtu
 + **Ex04:** Integral computation program with synchronization (critical section and atomics).
 + **Ex05:** Parallel for loop and reduction.
 + **Ex06:** Integral computation program using parallel for loops.
++ **Ex07:** Integral computation program using parallel for loops and data environments.
 
 ## License:
 
