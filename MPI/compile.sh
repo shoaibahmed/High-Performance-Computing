@@ -13,3 +13,7 @@ mpiexec -n 2 ./global_var
 echo ""
 echo "~~~~~~~~~~~~~ Executing send and receive program! ~~~~~~~~~~~~~"
 mpiexec -n 2 ./send_recv
+
+echo ""
+echo "~~~~~~~~~~~~~ Executing reduction program! ~~~~~~~~~~~~~"
+mpiexec -n 10 ./reduce
