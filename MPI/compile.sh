@@ -17,3 +17,15 @@ mpiexec -n 2 ./send_recv
 echo ""
 echo "~~~~~~~~~~~~~ Executing reduction program! ~~~~~~~~~~~~~"
 mpiexec -n 10 ./reduce
+
+echo ""
+echo "~~~~~~~~~~~~~ Executing non-blocking reduction program! ~~~~~~~~~~~~~"
+mpiexec -n 10 ./non_blocking_reduce
+
+echo ""
+echo "~~~~~~~~~~~~~ Executing broadcast program! ~~~~~~~~~~~~~"
+mpiexec -n 10 ./broadcast
+
+echo ""
+echo "~~~~~~~~~~~~~ Executing ring program! ~~~~~~~~~~~~~"
+mpiexec -n 10 ./ring
